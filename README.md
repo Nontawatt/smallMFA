@@ -1,4 +1,4 @@
-# TOTP 2FA Login Demo / ตัวอย่างการเข้าสู่ระบบด้วย TOTP
+# TOTP 2FA Login
 
 This project demonstrates how to add Time‑based One‑Time Password (TOTP) two‑factor authentication (2FA) to a web application's login flow using a simple JavaScript snippet and a Node.js backend. The goal is to provide an example of how to drop in a script on your login page that communicates with a server to perform 2FA verification.
 
