@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOTP 2FA Login Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"], input[type="password"], input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #aaa;
+    }
+    .qr-code {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .hidden {
+      display: none;
+    }
+    .message {
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Login / เข้าสู่ระบบ</h1>
+    <div id="message" class="message hidden"></div>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="username">Username (ชื่อผู้ใช้)</label>
+        <input type="text" id="username" name="username" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password (รหัสผ่าน)</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <div id="totp-section" class="hidden">
+        <div id="qr-setup" class="hidden">
+          <p>Scan the QR code with your authenticator app, then enter the 6‑digit code below to complete setup. / สแกนคิวอาร์โค้ดด้วยแอปยืนยันตัวตนของคุณ แล้วกรอกรหัส 6 หลักด้านล่างเพื่อดำเนินการตั้งค่า</p>
+          <div id="qr-code" class="qr-code"></div>
+        </div>
+        <div class="form-group">
+          <label for="token">TOTP Code (รหัสยืนยัน)</label>
+          <input type="number" id="token" name="token" minlength="6" maxlength="6" pattern="\d{6}" placeholder="123456" />
+        </div>
+      </div>
+      <button type="submit" id="submit-button">Login</button>
+    </form>
+  </div>
+  <!--
+    The login.js script can be hosted remotely. Replace the src attribute
+    below with the URL where your script is hosted. You can pass query
+    parameters or data attributes to specify the API site and default user.
+    Example:
+    <script src="https://web.tunableproject.com/path/to/login.js?site=example.com&user=test"></script>
+  -->
+  <script src="https://web.tunableproject.com/path/to/login.js"></script>
+</body>
+</html>
